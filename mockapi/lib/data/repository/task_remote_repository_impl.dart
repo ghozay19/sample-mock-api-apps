@@ -36,7 +36,7 @@ class TaskRemoteRepositoryImpl implements TaskRemoteRepository {
   }) async {
     final response = await _taskRemoteDatasource.addTask(
       title: taskEntity.title,
-      dueDate: taskEntity.dueDate,
+      dueDate: taskEntity.dueDateFormatted,
       description: taskEntity.taskDescription,
       isCompleted: taskEntity.isCompleted,
     );

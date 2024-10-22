@@ -1,15 +1,15 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
-import 'package:mockapi/domain/usecase/retrieve_tasks.dart';
+import 'package:dio/dio.dart';
+import 'package:mockapi/domain/usecase/retrieve_detail_task.dart';
+import 'package:mockapi/presentation/detail/get/detail_task_controller.dart';
 
 import '../../../data/datasource/task_remote_datasource.dart';
 import '../../../data/datasource/task_remote_datasource_impl.dart';
 import '../../../data/repository/task_remote_repository_impl.dart';
 import '../../../domain/repository/task_remote_repository.dart';
 import '../../../domain/usecase/edit_task.dart';
-import 'home_controller.dart';
 
-class HomeBinding extends Bindings {
+class DetailTaskBinding extends Bindings {
   @override
   void dependencies() {
     Get.put<TaskRemoteDatasource>(
@@ -24,8 +24,8 @@ class HomeBinding extends Bindings {
       ),
     );
 
-    Get.put<RetrieveTask>(
-      RetrieveTask(
+    Get.put<RetrieveDetailTask>(
+      RetrieveDetailTask(
         taskRemoteRepository: Get.find<TaskRemoteRepository>(),
       ),
     );
@@ -36,9 +36,9 @@ class HomeBinding extends Bindings {
       ),
     );
 
-    Get.put<HomeController>(
-      HomeController(
-        retrieveTask: Get.find<RetrieveTask>(),
+    Get.put<DetailTaskController>(
+      DetailTaskController(
+        detailTask: Get.find<RetrieveDetailTask>(),
         editTask: Get.find<EditTask>(),
       ),
     );

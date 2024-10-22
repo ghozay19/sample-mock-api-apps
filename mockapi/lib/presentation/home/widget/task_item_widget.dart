@@ -5,33 +5,38 @@ import '../../../app/const/enum.dart';
 
 class TaskItemWidget extends StatelessWidget {
   final TaskEntity task;
-  final Function(String) onDelete;
-  final Function(String) onEdit;
+  final Function(TaskEntity) onDelete;
+  final Function(TaskEntity) onEdit;
+  final Function(TaskEntity) onTap;
 
   const TaskItemWidget({
     super.key,
     required this.task,
     required this.onDelete,
     required this.onEdit,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Dismissible(
-      key: Key(task.id),
-      background: buildSwipeActionLeft(),
-      secondaryBackground: buildSwipeActionRight(),
-      confirmDismiss: (direction) async {
-        if (direction == DismissDirection.startToEnd) {
-          onEdit(task.id);
+    return GestureDetector(
+      onTap: () => onTap(task),
+      child: Dismissible(
+        key: Key(task.id),
+        background: buildSwipeActionLeft(),
+        secondaryBackground: buildSwipeActionRight(),
+        confirmDismiss: (direction) async {
+          if (direction == DismissDirection.startToEnd) {
+            onEdit(task);
+            return false;
+          } else if (direction == DismissDirection.endToStart) {
+            final bool confirm = await _showDeleteConfirmationDialog(context);
+            return confirm;
+          }
           return false;
-        } else if (direction == DismissDirection.endToStart) {
-          final bool confirm = await _showDeleteConfirmationDialog(context);
-          return confirm;
-        }
-        return false;
-      },
-      child: buildTaskCard(context),
+        },
+        child: buildTaskCard(context),
+      ),
     );
   }
 
@@ -48,7 +53,7 @@ class TaskItemWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(task.title),
-                    Text(task.taskDescription),
+                    Text(task.dueDateFormatted),
                   ],
                 ),
               ),

@@ -8,7 +8,10 @@ class TaskMapper {
   static TaskEntity toEntity(TaskModel model) {
     return TaskEntity(
       title: model.title,
-      dueDate: CommonUtils.dateTimeFormat(DateTime.parse(model.duedate)),
+      dueDateFormatted: CommonUtils.dateTimeFormat(
+          DateTime.parse(model.duedate),
+          iSShowOnlyDate: true),
+      dueDate: model.duedate,
       isCompleted: model.completionStatus
           ? TaskCompletedEnum.completed
           : TaskCompletedEnum.uncompleted,

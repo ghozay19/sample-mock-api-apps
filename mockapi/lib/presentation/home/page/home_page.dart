@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mockapi/presentation/detail/page/detail_task_page.dart';
+import 'package:mockapi/presentation/widget/dialog.dart';
 
 import '../../../data/network/wrapper.dart';
 import '../get/home_controller.dart';
@@ -63,8 +65,19 @@ class HomePage extends GetView<HomeController> {
 
             return TaskItemWidget(
               task: data,
-              onDelete: (index) {},
-              onEdit: (index) {},
+              onDelete: (task) {},
+              onEdit: (task) {
+                showEditTaskDialog(
+                  context: context,
+                  task: task,
+                  onSave: (task) {
+                    controller.updateTask(task);
+                  },
+                );
+              },
+              onTap: (task) {
+                Get.toNamed(DetailTaskPage.routeName, arguments: task);
+              },
             );
           } else {
             return const SizedBox.shrink();
