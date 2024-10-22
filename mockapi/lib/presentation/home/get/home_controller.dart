@@ -99,9 +99,7 @@ class HomeController extends GetxController {
   }
 
   Future<void> deleteTask(TaskEntity task) async {
-    final result = await _deleteTask.call(
-      int.parse(task.id),
-    );
+    final result = await _deleteTask.call(int.parse(task.id));
     result.fold(
       (failure) {
         debugPrint('Error occurred: $failure');
@@ -109,8 +107,11 @@ class HomeController extends GetxController {
         showToast(message: errorMessage);
       },
       (result) {
+        final currentTasks = _listTask.value.data ?? [];
+        currentTasks.remove(task);
+        _listTask.value = DataWrapper.success(currentTasks);
+
         showToast(message: 'Task deleted successfully');
-        // fetchTasks();
       },
     );
   }

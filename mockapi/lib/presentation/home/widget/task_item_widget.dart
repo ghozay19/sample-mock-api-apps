@@ -35,6 +35,11 @@ class TaskItemWidget extends StatelessWidget {
           }
           return false;
         },
+        onDismissed: (direction) {
+          if (direction == DismissDirection.endToStart) {
+            onDelete(task);
+          }
+        },
         child: buildTaskCard(context),
       ),
     );
