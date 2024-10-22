@@ -6,17 +6,21 @@ import 'package:mockapi/presentation/widget/toast.dart';
 
 import '../../../app/const/string.dart';
 import '../../../data/network/wrapper.dart';
+import '../../../domain/usecase/delete_task.dart';
 import '../../../domain/usecase/edit_task.dart';
 
 class HomeController extends GetxController {
   final RetrieveTask _retrieveTask;
   final EditTask _editTask;
+  final DeleteTask _deleteTask;
 
   HomeController({
     required RetrieveTask retrieveTask,
     required EditTask editTask,
+    required DeleteTask deleteTask,
   })  : _retrieveTask = retrieveTask,
-        _editTask = editTask;
+        _editTask = editTask,
+        _deleteTask = deleteTask;
 
   final _listTask = Rx<DataWrapper<List<TaskEntity>>>(DataWrapper.init());
 
@@ -90,6 +94,23 @@ class HomeController extends GetxController {
       (result) {
         showToast(message: 'Task updated successfully');
         fetchTasks();
+      },
+    );
+  }
+
+  Future<void> deleteTask(TaskEntity task) async {
+    final result = await _deleteTask.call(
+      int.parse(task.id),
+    );
+    result.fold(
+      (failure) {
+        debugPrint('Error occurred: $failure');
+        final errorMessage = failure.toString();
+        showToast(message: errorMessage);
+      },
+      (result) {
+        showToast(message: 'Task deleted successfully');
+        // fetchTasks();
       },
     );
   }

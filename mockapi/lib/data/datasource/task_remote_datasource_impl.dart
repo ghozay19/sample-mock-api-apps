@@ -154,4 +154,34 @@ class TaskRemoteDatasourceImpl extends TaskRemoteDatasource {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteTask({required int id}) async {
+    try {
+      final response = await _client.delete(
+        '${AppEndpoints.task}/$id',
+      );
+
+      if (response.statusCode == 200) {
+        return const Right(true);
+      } else {
+        return const Right(false);
+      }
+    } on DioException catch (error) {
+      if (error.type == DioExceptionType.unknown) {
+        return Left(
+          NetworkFailure('Network error: ${error.message}'),
+        );
+      } else {
+        return Left(
+          ServerFailure(
+              'Server error: ${error.response?.statusMessage ?? 'Unknown error'}'),
+        );
+      }
+    } catch (error) {
+      return Left(
+        ServerFailure('Unexpected error: $error'),
+      );
+    }
+  }
 }

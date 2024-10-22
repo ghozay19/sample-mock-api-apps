@@ -80,4 +80,16 @@ class TaskRemoteRepositoryImpl implements TaskRemoteRepository {
       return Right(mappedData);
     });
   }
+
+  @override
+  Future<Either<Failure, bool>> deleteTask({required int id}) async {
+    final response = await _taskRemoteDatasource.deleteTask(id: id);
+
+    return response.fold(
+      (failure) => Left(failure),
+      (result) {
+        return Right(result);
+      },
+    );
+  }
 }

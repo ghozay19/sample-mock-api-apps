@@ -39,6 +39,12 @@ class HomePage extends GetView<HomeController> {
   }
 
   Widget buildList(BuildContext context) {
+    if (controller.tasks.isEmpty) {
+      return const Center(
+        child: Text('Task Was Empty'),
+      );
+    }
+
     return NotificationListener<ScrollEndNotification>(
       onNotification: (scrollEnd) {
         final metrics = scrollEnd.metrics;
@@ -65,7 +71,9 @@ class HomePage extends GetView<HomeController> {
 
             return TaskItemWidget(
               task: data,
-              onDelete: (task) {},
+              onDelete: (task) {
+                controller.deleteTask(task);
+              },
               onEdit: (task) {
                 showEditTaskDialog(
                   context: context,

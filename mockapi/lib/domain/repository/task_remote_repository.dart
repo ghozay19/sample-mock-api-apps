@@ -20,4 +20,8 @@ abstract class TaskRemoteRepository {
   Future<Either<Failure, TaskEntity>> getDetailTask({
     required int id,
   });
+
+  Future<Either<Failure, bool>> deleteTask({
+    required int id,
+  });
 }

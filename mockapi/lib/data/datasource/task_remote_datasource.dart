@@ -28,4 +28,8 @@ abstract class TaskRemoteDatasource {
   Future<Either<Failure, TaskModel>> getDetailTask({
     required int id,
   });
+
+  Future<Either<Failure, bool>> deleteTask({
+    required int id,
+  });
 }

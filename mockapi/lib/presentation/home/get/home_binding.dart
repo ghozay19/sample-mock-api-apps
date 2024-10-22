@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';
+import 'package:mockapi/domain/usecase/delete_task.dart';
 import 'package:mockapi/domain/usecase/retrieve_tasks.dart';
 
 import '../../../data/datasource/task_remote_datasource.dart';
@@ -36,10 +37,17 @@ class HomeBinding extends Bindings {
       ),
     );
 
+    Get.put<DeleteTask>(
+      DeleteTask(
+        taskRemoteRepository: Get.find<TaskRemoteRepository>(),
+      ),
+    );
+
     Get.put<HomeController>(
       HomeController(
         retrieveTask: Get.find<RetrieveTask>(),
         editTask: Get.find<EditTask>(),
+        deleteTask: Get.find<DeleteTask>(),
       ),
     );
   }
