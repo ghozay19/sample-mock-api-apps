@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../presentation/home/get/home_binding.dart';
+import '../presentation/home/page/home_page.dart';
 import '../presentation/splash/get/splash_binding.dart';
 import '../presentation/splash/page/splash_page.dart';
 
@@ -13,4 +15,9 @@ final GetPage splashPage = GetPage(
 
 final pageRoutes = [
   splashPage,
+  GetPage(
+    name: HomePage.routeName,
+    page: () => const HomePage(),
+    binding: HomeBinding(),
+  ),
 ];

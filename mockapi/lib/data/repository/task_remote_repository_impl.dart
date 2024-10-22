@@ -8,7 +8,9 @@ import '../datasource/task_remote_datasource.dart';
 
 class TaskRemoteRepositoryImpl implements TaskRemoteRepository {
   final TaskRemoteDatasource _taskRemoteDatasource;
-  TaskRemoteRepositoryImpl(this._taskRemoteDatasource);
+  TaskRemoteRepositoryImpl({required TaskRemoteDatasource datasource})
+      : _taskRemoteDatasource = datasource;
+
   @override
   Future<Either<Failure, List<TaskEntity>>> getTasks({
     required int page,

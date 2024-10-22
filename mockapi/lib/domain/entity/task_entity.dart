@@ -2,7 +2,7 @@ import 'package:mockapi/app/const/enum.dart';
 
 class TaskEntity {
   final String title;
-  final DateTime dueDate;
+  final String dueDate;
   final TaskCompletedEnum isCompleted;
   final String taskDescription;
   final String id;

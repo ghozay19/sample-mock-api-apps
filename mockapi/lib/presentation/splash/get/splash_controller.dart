@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../../home/page/home_page.dart';
+
 class SplashController extends GetxController {
   @override
   void onInit() async {
@@ -11,7 +13,7 @@ class SplashController extends GetxController {
     Future.delayed(
       const Duration(seconds: 1),
       () async {
-        ///TODO move to homepage.
+        Get.offAllNamed(HomePage.routeName);
       },
     );
   }

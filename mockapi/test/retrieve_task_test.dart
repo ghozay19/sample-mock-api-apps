@@ -22,14 +22,14 @@ void main() {
   final testTasks = [
     TaskEntity(
       title: "Test Task 1",
-      dueDate: DateTime.now(),
+      dueDate: '2024-11-20',
       isCompleted: TaskCompletedEnum.uncompleted,
       taskDescription: "Test description",
       id: "1",
     ),
     TaskEntity(
       title: "Test Task 2",
-      dueDate: DateTime.now(),
+      dueDate: '2024-11-20',
       isCompleted: TaskCompletedEnum.completed,
       taskDescription: "Another description",
       id: "2",
