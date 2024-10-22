@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:mockapi/const/failure.dart';
+import 'package:mockapi/app/const/failure.dart';
 import 'package:mockapi/domain/repository/task_remote_repository.dart';
 import 'package:mockapi/domain/usecase/usecase.dart';
 

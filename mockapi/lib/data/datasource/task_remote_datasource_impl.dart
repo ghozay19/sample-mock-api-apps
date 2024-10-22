@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:mockapi/const/failure.dart';
+import 'package:mockapi/app/const/failure.dart';
 import 'package:mockapi/data/datasource/task_remote_datasource.dart';
 import 'package:mockapi/data/model/task_model.dart';
 
-import '../../const/app_endpoints.dart';
+import '../../app/const/app_endpoints.dart';
 
 class TaskRemoteDatasourceImpl extends TaskRemoteDatasource {
   final Dio _client;

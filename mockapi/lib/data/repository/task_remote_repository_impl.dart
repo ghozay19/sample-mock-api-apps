@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:mockapi/data/mapper/task_mapper.dart';
 
-import '../../const/failure.dart';
+import '../../app/const/failure.dart';
 import '../../domain/repository/task_remote_repository.dart';
 import '../../domain/entity/task_entity.dart';
 import '../datasource/task_remote_datasource.dart';

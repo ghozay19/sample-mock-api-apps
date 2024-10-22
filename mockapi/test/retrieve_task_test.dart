@@ -1,11 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockapi/const/enum.dart';
+import 'package:mockapi/app/const/enum.dart';
 import 'package:mockapi/domain/entity/task_entity.dart';
 import 'package:mockapi/domain/usecase/retrieve_tasks.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
-import 'package:mockapi/const/failure.dart';
 import 'package:mockapi/domain/repository/task_remote_repository.dart';
 
 import 'retrieve_task_test.mocks.dart';

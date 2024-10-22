@@ -1,4 +1,4 @@
-import 'package:mockapi/const/enum.dart';
+import 'package:mockapi/app/const/enum.dart';
 
 class TaskEntity {
   final String title;

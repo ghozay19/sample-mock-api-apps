@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:mockapi/const/failure.dart';
+import 'package:mockapi/app/const/failure.dart';
 
 import '../model/task_model.dart';
 
