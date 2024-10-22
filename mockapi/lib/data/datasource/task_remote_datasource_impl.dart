@@ -13,8 +13,8 @@ class TaskRemoteDatasourceImpl extends TaskRemoteDatasource {
 
   @override
   Future<Either<Failure, List<TaskModel>>> getTasks({
-    required String page,
-    required String limit,
+    required int page,
+    required int limit,
   }) async {
     try {
       final response = await _client.get(

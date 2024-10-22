@@ -5,7 +5,7 @@ import '../model/task_model.dart';
 
 abstract class TaskRemoteDatasource {
   Future<Either<Failure, List<TaskModel>>> getTasks({
-    required String page,
-    required String limit,
+    required int page,
+    required int limit,
   });
 }
