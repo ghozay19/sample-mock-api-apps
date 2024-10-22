@@ -1,68 +1,3 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/widgets.dart';
-// import 'package:get/get.dart';
-// import 'package:mockapi/domain/entity/task_entity.dart';
-
-// import '../../../app/const/enum.dart';
-
-// class TaskItemWidget extends StatelessWidget {
-//   final TaskEntity task;
-
-//   const TaskItemWidget({super.key, required this.task});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.all(8.0),
-//       child: Card(
-//         child: Padding(
-//           padding: const EdgeInsets.all(8.0),
-//           child: Row(
-//             children: [
-//               Expanded(
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       task.title,
-//                     ),
-//                     Text(
-//                       task.taskDescription,
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//               buildStatusTask(context),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-
-//   Widget buildStatusTask(BuildContext context) {
-//     final isCompleted = task.isCompleted == TaskCompletedEnum.completed
-//         ? TaskCompletedEnum.completed.name.capitalizeFirst!
-//         : TaskCompletedEnum.uncompleted.name.capitalizeFirst!;
-//     return Container(
-//       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-//       decoration: BoxDecoration(
-//         color: task.isCompleted == TaskCompletedEnum.completed
-//             ? Colors.green
-//             : Colors.orange,
-//         borderRadius: BorderRadius.circular(8),
-//       ),
-//       alignment: Alignment.center,
-//       child: Text(
-//         isCompleted,
-//         style: const TextStyle(
-//           color: Colors.white, // Text color
-//         ),
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mockapi/domain/entity/task_entity.dart';
@@ -70,8 +5,8 @@ import '../../../app/const/enum.dart';
 
 class TaskItemWidget extends StatelessWidget {
   final TaskEntity task;
-  final Function(String) onDelete; // Callback for delete action
-  final Function(String) onEdit; // Callback for edit action
+  final Function(String) onDelete;
+  final Function(String) onEdit;
 
   const TaskItemWidget({
     super.key,

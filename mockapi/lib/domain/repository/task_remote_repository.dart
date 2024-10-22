@@ -8,4 +8,16 @@ abstract class TaskRemoteRepository {
     required int page,
     required int limit,
   });
+
+  Future<Either<Failure, bool>> addTask({
+    required TaskEntity taskEntity,
+  });
+
+  Future<Either<Failure, bool>> editTask({
+    required TaskEntity taskEntity,
+  });
+
+  Future<Either<Failure, TaskEntity>> getDetailTask({
+    required int id,
+  });
 }
